@@ -1,6 +1,5 @@
 {
-  "cleanUrls": true,
   "rewrites": [
-    { "source": "/strava-auth", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
