@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>สวนวิ่ง — Rundub</title>
+  <meta name="description" content="ดูอันดับนักวิ่งประจำสวนบน Rundub" />
+  <meta property="og:title" content="มาวิ่งแข่งกันบน Rundub" />
+  <meta property="og:description" content="ดูอันดับนักวิ่งประจำสวน แล้วมาไต่อันดับด้วยกัน" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .park-hero { text-align: center; padding: 56px 24px 24px; }
+    .park-eyebrow { color: var(--muted); font-size: 14px; font-weight: 600; letter-spacing: 0.3px; }
+    .park-name { font-family: var(--display); font-weight: 400; color: var(--primary);
+                 font-size: 38px; line-height: 1.12; letter-spacing: -0.5px; margin: 8px 0 6px; }
+    .park-sub { color: var(--secondary); font-size: 16px; max-width: 460px; margin: 0 auto; }
+    .cta-col { display: flex; flex-direction: column; gap: 12px; max-width: 320px; margin: 28px auto 0; }
+    .btn { display: block; text-align: center; padding: 15px 18px; border-radius: 16px;
+           font-weight: 600; font-size: 15px; text-decoration: none; }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-pressed); text-decoration: none; }
+    .btn-secondary { background: var(--card); color: var(--primary); border: 1px solid var(--border); }
+    .gate { max-width: 380px; margin: 24px auto 0; padding: 14px 16px; border-radius: 16px;
+            background: var(--card); border: 1px solid var(--border); box-shadow: 0 2px 6px rgba(30,31,35,0.05);
+            color: var(--secondary); font-size: 13px; text-align: center; }
+  </style>
+</head>
+<body class="lang-th">
+  <nav class="nav">
+    <div class="brand"><a href="/" style="color:var(--primary);">Rundub</a></div>
+    <div class="nav-links">
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+  </nav>
+
+  <main class="park-hero">
+    <div class="park-eyebrow">🏃 อันดับนักวิ่งประจำสวน</div>
+    <h1 class="park-name" id="parkName">สวนบน Rundub</h1>
+    <p class="park-sub">มาดูว่าใครครองอันดับสวนนี้ แล้วลงวิ่งไต่อันดับไปด้วยกันบน Rundub</p>
+
+    <div class="cta-col">
+      <a class="btn btn-primary" id="openApp" href="#">เปิดในแอป Rundub</a>
+      <a class="btn btn-secondary" id="getApp" href="/">ดาวน์โหลดแอป Rundub</a>
+    </div>
+
+    <div class="gate">
+      🔒 อันดับและสถิติของสวนดูได้สำหรับผู้ใช้ที่เข้าสู่ระบบในแอป Rundub
+    </div>
+  </main>
+
+  <footer>
+    <div>© 2026 Rundub</div>
+    <div style="margin-top:8px;">
+      <a href="/privacy.html">Privacy Policy</a> ·
+      <a href="/terms.html">Terms of Use</a> ·
+      <a href="mailto:noppawit.p@apprundub.com">noppawit.p@apprundub.com</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var p = new URLSearchParams(location.search);
+      var id = p.get('id');
+      var name = p.get('n');
+      if (name) {
+        document.getElementById('parkName').textContent = name;
+        document.title = name + ' — Rundub';
+      }
+      // Deep link into the app (expo-router scheme: rundub://parks/<id>)
+      var openApp = document.getElementById('openApp');
+      if (id) {
+        openApp.setAttribute('href', 'rundub://parks/' + encodeURIComponent(id));
+      } else {
+        openApp.style.display = 'none';
+      }
+      // TODO: replace with real Play Store / App Store links once published.
+    })();
+  </script>
+</body>
+</html>
